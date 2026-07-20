@@ -17,10 +17,11 @@ jobs:
   macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Tap repository
+        run: brew tap KiboMibo/tap
       - name: Install formula
-        run: brew install --formula ./Formula/sshmon.rb
+        run: brew install KiboMibo/tap/sshmon
       - name: Test formula
-        run: brew test sshmon
+        run: brew test KiboMibo/tap/sshmon
       - name: Verify executable
-        run: sshmon --version
+        run: test "$(sshmon --version)" = "sshmon 0.3.0"
