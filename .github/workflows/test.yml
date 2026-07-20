@@ -1,0 +1,26 @@
+name: Test formulas
+
+on:
+  push:
+    paths:
+      - "Formula/**"
+      - ".github/workflows/test.yml"
+  pull_request:
+    paths:
+      - "Formula/**"
+      - ".github/workflows/test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install formula
+        run: brew install --formula ./Formula/sshmon.rb
+      - name: Test formula
+        run: brew test sshmon
+      - name: Verify executable
+        run: sshmon --version
