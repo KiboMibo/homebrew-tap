@@ -1,29 +1,29 @@
 class Sshmon < Formula
   desc "TUI monitoring of Linux servers over SSH without agents"
   homepage "https://github.com/KiboMibo/sshmon"
-  version "0.4.2"
+  version "0.5.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/KiboMibo/sshmon/releases/download/v0.4.2/sshmon_v0.4.2_darwin_arm64.tar.gz"
-      sha256 "39ee3c9b30ec959360d218bd87586632269fc4eaa62d28122f01303390a0cf5b"
+      url "https://github.com/KiboMibo/sshmon/releases/download/v0.5.0/sshmon_v0.5.0_darwin_arm64.tar.gz"
+      sha256 "308dfe16ca87c7244ee32a588798a97b58b5fdafe01e2c060990ad0943fbdae3"
     end
 
     on_intel do
-      url "https://github.com/KiboMibo/sshmon/releases/download/v0.4.2/sshmon_v0.4.2_darwin_amd64.tar.gz"
-      sha256 "96390df64b435732f3f0ea814c487c06f6d4070b3cb8a9c470bfd443bebc0880"
+      url "https://github.com/KiboMibo/sshmon/releases/download/v0.5.0/sshmon_v0.5.0_darwin_amd64.tar.gz"
+      sha256 "313aca1980aef3eccda86328ec8b2bb995068f63fd76f9d45b8f2e8ca3c7b1b1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/KiboMibo/sshmon/releases/download/v0.4.2/sshmon_v0.4.2_linux_arm64.tar.gz"
-      sha256 "2df30e057d50846b4fa6256e29013ae5c7dccb788a6a59d8013b5aaa476c6014"
+      url "https://github.com/KiboMibo/sshmon/releases/download/v0.5.0/sshmon_v0.5.0_linux_arm64.tar.gz"
+      sha256 "d0758a941ade970bc15af65f1ae221b04800d231c6fb81f276db999a306bded0"
     end
 
     on_intel do
-      url "https://github.com/KiboMibo/sshmon/releases/download/v0.4.2/sshmon_v0.4.2_linux_amd64.tar.gz"
-      sha256 "fb8b371173b1d662c8c045201bab5b840afcd2fcbaaff496646d796d26ffb947"
+      url "https://github.com/KiboMibo/sshmon/releases/download/v0.5.0/sshmon_v0.5.0_linux_amd64.tar.gz"
+      sha256 "1b0b6f5a4ea06974fbb2cb4b9e996be80f22da4239e5205e6d9819b221c56f6c"
     end
   end
 
@@ -32,6 +32,6 @@ class Sshmon < Formula
   end
 
   test do
-    assert_equal "sshmon 0.4.2", shell_output("#{bin}/sshmon --version").strip
+    assert_equal "sshmon 0.5.0", shell_output("#{bin}/sshmon --version").strip
   end
 end
