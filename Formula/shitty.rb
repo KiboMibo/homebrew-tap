@@ -2,9 +2,9 @@
 class Shitty < Formula
   desc "Fastest terminal emulator on Earth (KiboMibo fork: glass, sidebar, panes)"
   homepage "https://github.com/KiboMibo/shitty"
-  url "https://github.com/KiboMibo/shitty/releases/download/16/st-darwin-arm64.tar.gz"
-  version "16"
-  sha256 "a11663ae93945afa3a7771e701d808597a74b2e650ef981d7b55c75bc04541fe"
+  url "https://github.com/KiboMibo/shitty/releases/download/17/st-darwin-arm64.tar.gz"
+  version "17"
+  sha256 "ad856d5242d78c4c5a691c2cfe97e5e0bbc52cd0a217f98dabd3d1634d12d783"
   license any_of: ["MIT", "GPL-3.0-or-later"]
 
   depends_on arch: :arm64

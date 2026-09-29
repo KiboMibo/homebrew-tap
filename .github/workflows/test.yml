@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - "Formula/**"
+      - "Casks/**"
       - ".github/workflows/test.yml"
   pull_request:
     paths:
       - "Formula/**"
+      - "Casks/**"
       - ".github/workflows/test.yml"
 
 permissions:
@@ -19,9 +21,27 @@ jobs:
     steps:
       - name: Tap repository
         run: brew tap KiboMibo/tap
-      - name: Install formula
-        run: brew install KiboMibo/tap/sshmon
-      - name: Test formula
-        run: brew test KiboMibo/tap/sshmon
-      - name: Verify executable
-        run: test "$(sshmon --version)" = "sshmon 0.3.0"
+
+      - name: sshmon
+        run: |
+          brew install KiboMibo/tap/sshmon
+          brew test KiboMibo/tap/sshmon
+          # The version the formula pins, not one written here: a pinned
+          # string went stale on the first bump.
+          version="$(brew info --json=v2 KiboMibo/tap/sshmon | jq -r '.formulae[0].versions.stable')"
+          test "$(sshmon --version)" = "sshmon $version"
+
+      - name: shitty and pretty
+        run: |
+          brew install KiboMibo/tap/shitty
+          brew test KiboMibo/tap/shitty
+          brew install KiboMibo/tap/pretty
+          brew test KiboMibo/tap/pretty
+
+      - name: Shitty.app
+        run: |
+          brew install --cask KiboMibo/tap/shitty-app
+          /Applications/Shitty.app/Contents/MacOS/st -version | grep -q Shitty
+          # The cask's postflight is what lets the first launch past
+          # Gatekeeper; the flag must be gone.
+          ! xattr -p com.apple.quarantine /Applications/Shitty.app 2>/dev/null
