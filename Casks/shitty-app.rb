@@ -1,7 +1,7 @@
 # Shitty.app from the KiboMibo/shitty fork; bump version/sha256 per release.
 cask "shitty-app" do
-  version "18"
-  sha256 "9427e779535980c131844fb500e6e9a6abc6499f82d85537b8c0063737f811e2"
+  version "19"
+  sha256 "b79b8a7fd3938dcfd559e5617e58d93c1183c3ff9fad7677a043745dcc0191ef"
 
   url "https://github.com/KiboMibo/shitty/releases/download/#{version}/Shitty.app.zip"
   name "Shitty"
