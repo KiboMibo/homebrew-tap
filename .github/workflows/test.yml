@@ -19,8 +19,17 @@ jobs:
   macos:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # The checkout, not the published tap, so a pull request tests its own
+      # formulas and casks.
       - name: Tap repository
-        run: brew tap KiboMibo/tap
+        run: |
+          git -C "$GITHUB_WORKSPACE" checkout -B ci
+          brew tap KiboMibo/tap "$GITHUB_WORKSPACE"
 
       - name: sshmon
         run: |
