@@ -45,3 +45,10 @@ jobs:
           # The cask's postflight is what lets the first launch past
           # Gatekeeper; the flag must be gone.
           ! xattr -p com.apple.quarantine /Applications/Shitty.app 2>/dev/null
+
+      - name: Glide.app
+        run: |
+          brew install --cask KiboMibo/tap/glide-kibo
+          version="$(brew info --json=v2 --cask KiboMibo/tap/glide-kibo | jq -r '.casks[0].version')"
+          glide --version | grep -qF "$version"
+          ! xattr -p com.apple.quarantine /Applications/Glide.app 2>/dev/null
